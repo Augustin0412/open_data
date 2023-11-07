@@ -1,7 +1,9 @@
 import streamlit as st
 # #sur mac : commande à lancer pour faire run le serveur  : streamlit run /Users/augustinhannebert/Nextcloud/FAC/M2/S1/open_data/app_streamlit.py
 # # #
-# sur windows : python -m streamlit  run c:/Users/augustin.hannebert/Documents/open_data/app_streamlit.py
+# sur windows augustin: python -m streamlit  run c:/Users/augustin.hannebert/Documents/open_data/app_streamlit.py
+# sur windows paul: python -m streamlit  run C:\Users\paulp\OneDrive\Documents\Open_data_M2\open_data\app_streamlit.py
+
 import geopandas as gpd
 
 #-------------------------------------------------------------------------------------------------

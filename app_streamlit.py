@@ -27,6 +27,14 @@ PAGES = {
     "Sex analysis": "sex_analysis",
     "Athlete analysis": "athlete_analysis"
 }
+st.markdown("""
+<style>
+div.row-widget.stRadio > div{flex-direction:row;}
+label[data-baseweb="radio"]{padding:10px; border-radius:10px; margin:5px; border:2px solid #ccc; display:flex; align-items:center; justify-content:center;}
+label[data-baseweb="radio"]:hover{border-color:#ff4b4b;}
+</style>
+""", unsafe_allow_html=True)
+
 st.sidebar.title('Navigation')
 selection = st.sidebar.radio("Go to", list(PAGES.keys()))
 

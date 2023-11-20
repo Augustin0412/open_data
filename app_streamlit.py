@@ -35,7 +35,7 @@ selection = st.sidebar.radio("Go to", list(PAGES.keys()))
 if selection == "Home":
     st.header("Les jeux olympics à travers les âges")
     st.write("Utilisez la barre de navigation pour décuvrir l'application")
-    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Olympic_rings_without_rims.svg/1200px-Olympic_rings_without_rims.svg.png")  # Link to your logo or a welcome image
+    st.image("https://i.giphy.com/media/26ufmepVftH5Y2V7q/giphy.webp")  # Link to your logo or a welcome image
     # Ajouter un pied de page
     footer = """
     <style>
@@ -66,7 +66,7 @@ elif selection == "Data View":
         placeholder.image("https://cdn.dribbble.com/users/79654/screenshots/1436532/olympic_games_rings_loading.gif")
         
         # Attendre 3 secondes
-        time.sleep(3)
+        time.sleep(1.2)
 
         # Clear the placeholder (cela efface l'image)
         placeholder.empty()

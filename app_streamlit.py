@@ -25,8 +25,7 @@ PAGES = {
     "Data View": "data_view",
     "Country analysis": "country_analysis",
     "Sex analysis": "sex_analysis",
-    "Athlete analysis": "athlete_analysis",
-    "Brouillons": "brouillons"
+    "Athlete analysis": "athlete_analysis"
 }
 st.sidebar.title('Navigation')
 selection = st.sidebar.radio("Go to", list(PAGES.keys()))
@@ -177,30 +176,27 @@ elif selection == "Athlete analysis":
 
 elif selection == 'Country analysis':
     st.header('Country Analysis')
-    if st.checkbox('Particiations des pays'):
-        st.subheader('Particiations des pays')
-        st.write('Quels sont les pays ayant le plus participés aux jeux ? ')
+    st.subheader('Particiations des pays')
+    st.write('Quels sont les pays ayant le plus participés aux jeux ? ')
 
-        # Calculer les 10 premiers pays les plus fréquemment présents
-        # Calculer les pays les plus fréquemment présents
-        # top_countries = df['Team'].value_counts().sort_values(ascending=False).reset_index(inplace=False)
-        top_countries = df.groupby('Team').size().sort_values(ascending=False)
-        top_countries = top_countries.rename('Count')
+    # Calculer les 10 premiers pays les plus fréquemment présents
+    # Calculer les pays les plus fréquemment présents
+    top_countries = df.groupby('Team').size().sort_values(ascending=False)
+    top_countries = top_countries.rename('Count')
 
-        # Widget slider pour choisir le nombre de pays à afficher
-        num_countries_to_show = st.slider("Choisissez le nombre de pays à afficher", min_value=1, max_value=25, value=3)
+    # Widget slider pour choisir le nombre de pays à afficher
+    num_countries_to_show = st.slider("Choisissez le nombre de pays à afficher", min_value=1, max_value=25, value=3)
 
-        # Prendre les premiers num_countries_to_show pays
-        top_countries = top_countries.head(num_countries_to_show)
-        st.write(top_countries)
+    # Prendre les premiers num_countries_to_show pays
+    top_countries = top_countries.head(num_countries_to_show)
 
-        # Créer un histogramme à partir des données du tableau avec une couleur personnalisée
-        fig = px.bar(top_countries.reset_index(), x='Team', y='Count', labels={'index': 'Country', 'Team': 'Count'}, title=f'Top {num_countries_to_show} des pays ayant le plus de participations')
-        fig.update_xaxes(title_text='Country')
-        fig.update_yaxes(title_text='Nombre')
+    # Créer un histogramme à partir des données du tableau avec une couleur personnalisée
+    fig = px.bar(top_countries.reset_index(), x='Team', y='Count', labels={'index': 'Country', 'Team': 'Count'}, title=f'Top {num_countries_to_show} des pays ayant le plus de participations')
+    fig.update_xaxes(title_text='Country')
+    fig.update_yaxes(title_text='Nombre')
 
-        # Page Streamlit
-        st.plotly_chart(fig, use_container_width=True)
+    # Page Streamlit
+    st.plotly_chart(fig, use_container_width=True)
 
 elif selection == "Sex analysis":
     st.header('Analyses entre les hommes et les femmes')
@@ -276,6 +272,4 @@ elif selection == "Sex analysis":
 
         # Show plot in Streamlit
         st.plotly_chart(fig, use_container_width=True)
-        
-elif selection == "Brouillons":
-    pass
+    

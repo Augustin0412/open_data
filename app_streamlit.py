@@ -182,19 +182,18 @@ elif selection == 'Country analysis':
         st.write('Quels sont les pays ayant le plus participés aux jeux ? ')
         # Calculer les 10 premiers pays les plus fréquemment présents
         # Calculer les pays les plus fréquemment présents
-        top_countries = df['Team'].value_counts().sort_values(ascending=False)
-        
+        top_countries = df['Team'].value_counts().sort_values(ascending=False).reset_index(inplace=False)
+        top_countries.rename(columns={'Team': 'Count'}, inplace=True)
+        top_countries.rename(columns={'index': 'Team'}, inplace=True)
+        st.write(top_countries)
+
         # Widget slider pour choisir le nombre de pays à afficher
         num_countries_to_show = st.slider("Choisissez le nombre de pays à afficher", min_value=1, max_value=25, value=3)
 
         # Prendre les premiers num_countries_to_show pays
         top_countries = top_countries.head(num_countries_to_show)
-        top_countries = top_countries.rename_axis('Country').reset_index(name='Team')
-        top_countries = top_countries.rename_axis('Team').reset_index(name='Count')
-
 
         # Créer un histogramme à partir des données du tableau avec une couleur personnalisée
-        
         fig = px.bar(top_countries.reset_index(), x='Team', y='Count', labels={'index': 'Country', 'Team': 'Count'}, title=f'Top {num_countries_to_show} des pays ayant le plus de participations')
         fig.update_xaxes(title_text='Country')
         fig.update_yaxes(title_text='Nombre')

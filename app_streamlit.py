@@ -189,10 +189,13 @@ elif selection == 'Country analysis':
 
         # Prendre les premiers num_countries_to_show pays
         top_countries = top_countries.head(num_countries_to_show)
+        top_countries = top_countries.rename_axis('Country').reset_index(name='Team')
+        top_countries = top_countries.rename_axis('Team').reset_index(name='Count')
+
 
         # Créer un histogramme à partir des données du tableau avec une couleur personnalisée
         
-        fig = px.bar(top_countries.reset_index(), x='count', y='Team', labels={'index': 'Country', 'Team': 'Count'}, title=f'Top {num_countries_to_show} des pays ayant le plus de participations')
+        fig = px.bar(top_countries.reset_index(), x='Team', y='Count', labels={'index': 'Country', 'Team': 'Count'}, title=f'Top {num_countries_to_show} des pays ayant le plus de participations')
         fig.update_xaxes(title_text='Country')
         fig.update_yaxes(title_text='Nombre')
 

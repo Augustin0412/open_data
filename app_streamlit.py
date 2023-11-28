@@ -31,6 +31,27 @@ label[data-baseweb="radio"]:hover{border-color:#ff4b4b;}
 </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+    <style>
+    .stCheckbox {
+        display: flex;
+        justify-content: start;
+        padding: 5px;
+        margin: 5px;
+        background-color: #f0f2f6;
+        border-radius: 10px;
+    }
+    .stCheckbox label {
+        font-size: 16px;
+        color: #0a58ca;
+    }
+    .stCheckbox input {
+        accent-color: #0a58ca;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+
 st.sidebar.title('Navigation')
 selection = st.sidebar.radio("Aller à", list(PAGES.keys()))
 
@@ -60,16 +81,15 @@ if selection == "Page d'accueil":
 # Page d'accueil
 elif selection == "Vue Données":
     st.header("Vue Données")
-    if st.checkbox("Charger les données"):
-        placeholder = st.empty()
-        
-        placeholder.image("https://cdn.dribbble.com/users/79654/screenshots/1436532/olympic_games_rings_loading.gif")
-        
-        time.sleep(1.2)
+    placeholder = st.empty()
+    
+    placeholder.image("https://cdn.dribbble.com/users/79654/screenshots/1436532/olympic_games_rings_loading.gif")
+    
+    time.sleep(1.2)
 
-        placeholder.empty()
+    placeholder.empty()
 
-        st.write(df)
+    st.write(df)
 
 # Athlete Analysis page
 elif selection == "Analyse Athlètes":
@@ -235,7 +255,8 @@ elif selection == "Analyse Sexes":
 
         fig = px.scatter(counts_NOC, x='Male', y='Female', color='Year', 
                         title='Participation des hommes vs participation des femmes.',
-                        trendline='ols')
+                        trendline='ols',
+                        hover_data="NOC")
 
         fig.update_layout(
             xaxis_title="Nombre d'athlètes masculins",

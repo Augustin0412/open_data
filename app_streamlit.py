@@ -59,6 +59,15 @@ if selection == "Page d'accueil":
     st.header("Les jeux olympics à travers les âges")
     st.write("Utilisez la barre de navigation pour découvrir l'application")
     st.image("https://i.giphy.com/media/26ufmepVftH5Y2V7q/giphy.webp") 
+    expander = st.expander("Voir plus")
+    expander.write("""
+                    Cette application a pour but de vous faire découvrir les jeux olympiques à travers les âges.
+                    
+                    Vous pouvez naviguer entre les différentes pages grâce à la barre de navigation à gauche.
+                
+                    Vous pouvez également choisir les paramètres d'affichage des graphiques.
+                    
+    """)
     
     footer = """
     <style>

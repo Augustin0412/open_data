@@ -81,15 +81,16 @@ if selection == "Page d'accueil":
 # Page d'accueil
 elif selection == "Vue Données":
     st.header("Vue Données")
-    placeholder = st.empty()
-    
-    placeholder.image("https://cdn.dribbble.com/users/79654/screenshots/1436532/olympic_games_rings_loading.gif")
-    
-    time.sleep(1.2)
+    if st.checkbox("Charger les données"):
+        placeholder = st.empty()
+        
+        placeholder.image("https://cdn.dribbble.com/users/79654/screenshots/1436532/olympic_games_rings_loading.gif")
+        
+        time.sleep(1.2)
 
-    placeholder.empty()
+        placeholder.empty()
 
-    st.write(df)
+        st.write(df)
 
 # Athlete Analysis page
 elif selection == "Analyse Athlètes":
